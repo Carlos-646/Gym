@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IronCore Gym — Inscripciones y Planes</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo"><span class="mark">IC</span> IronCore Gym</div>
+    <nav class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="inicio">Inicio</button>
+      <button class="tab-btn" data-tab="planes">Planes y Pago</button>
+      <button class="tab-btn" data-tab="galeria">Galería y Reseñas</button>
+      <button class="tab-btn" data-tab="conocenos">Conócenos</button>
+      <button class="tab-btn" data-tab="perfil">Mi Perfil</button>
+    </nav>
+    <div class="user-chip" id="userChip">No has iniciado sesión</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- INICIO -->
+  <section class="panel active" id="inicio">
+    <div class="hero">
+      <img src="images/gym-hero.png" alt="Instalaciones de IronCore Gym" />
+      <div class="hero-content">
+        <h1>Entrena fuerte. Vive mejor.</h1>
+        <p class="lead">Renueva tu inscripción o compra un nuevo plan en segundos. Equipos de última generación y la mejor comunidad fitness.</p>
+        <div>
+          <button class="btn" onclick="goTab('planes')">Ver planes</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Renueva fácil</h3>
+        <p class="muted small">Tu plan vencido se renueva con un par de clics y pago seguro con tarjeta.</p>
+      </div>
+      <div class="card">
+        <h3>Tu perfil</h3>
+        <p class="muted small">Crea tu cuenta y consulta cuándo vence tu plan en todo momento.</p>
+      </div>
+      <div class="card">
+        <h3>Instalaciones top</h3>
+        <p class="muted small">Zona de pesas, cardio y entrenamiento funcional con equipo premium.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES Y PAGO -->
+  <section class="panel" id="planes">
+    <h1>Planes y Pago</h1>
+    <p class="lead">Elige tu plan, completa tus datos y paga de forma segura. Si ya tienes cuenta, tu renovación se registrará en tu perfil.</p>
+
+    <div class="grid grid-2" style="max-width:760px;margin:0 auto 36px;">
+      <div class="card plan">
+        <h3>Plan Mensual</h3>
+        <div class="price">$450<span>/mes</span></div>
+        <ul>
+          <li>Acceso ilimitado al gym</li>
+          <li>Zona de pesas y cardio</li>
+          <li>Clases grupales incluidas</li>
+          <li>Sin permanencia</li>
+        </ul>
+        <button class="btn block" onclick="selectPlan('Mensual', 450)">Elegir Mensual</button>
+      </div>
+      <div class="card plan popular">
+        <div class="badge">Mejor valor</div>
+        <h3>Plan Anual</h3>
+        <div class="price">$3,900<span>/año</span></div>
+        <ul>
+          <li>Todo lo del plan mensual</li>
+          <li>Ahorra más de 2 meses</li>
+          <li>1 evaluación física gratis</li>
+          <li>Congelamiento de plan</li>
+        </ul>
+        <button class="btn block" onclick="selectPlan('Anual', 3900)">Elegir Anual</button>
+      </div>
+    </div>
+
+    <div class="card form-card">
+      <h2 id="checkoutTitle">Completa tu inscripción</h2>
+      <p class="muted small" style="margin-bottom:18px;">Plan seleccionado: <b id="selectedPlanLabel">Ninguno</b></p>
+
+      <form id="checkoutForm">
+        <div class="form-row">
+          <label for="coFullName">Nombre completo</label>
+          <input type="text" id="coFullName" placeholder="Ej. Juan Pérez García" required />
+        </div>
+        <div class="form-row">
+          <label for="coEmail">Correo electrónico</label>
+          <input type="email" id="coEmail" placeholder="tucorreo@ejemplo.com" required />
+        </div>
+        <div class="form-row">
+          <label for="coPlan">Plan</label>
+          <select id="coPlan" required>
+            <option value="">Selecciona un plan</option>
+            <option value="Mensual">Plan Mensual — $450/mes</option>
+            <option value="Anual">Plan Anual — $3,900/año</option>
+          </select>
+        </div>
+        <button type="submit" class="btn block">Pagar de forma segura</button>
+        <p class="note">El pago se procesa con Stripe. Configura tus enlaces de pago en script.js (ver STRIPE_LINKS).</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- GALERÍA Y RESEÑAS -->
+  <section class="panel" id="galeria">
+    <h1>Galería y Reseñas</h1>
+    <p class="lead">Conoce nuestras instalaciones y lo que opina nuestra comunidad.</p>
+
+    <div class="section-title"><h2>Fotos del gym</h2></div>
+    <div class="grid grid-3">
+      <div class="gallery-item"><img src="images/gym-weights.png" alt="Zona de pesas" /></div>
+      <div class="gallery-item"><img src="images/gym-cardio.png" alt="Zona de cardio" /></div>
+      <div class="gallery-item"><img src="images/gym-training.png" alt="Entrenamiento funcional" /></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title"><h2>Reseñas de miembros</h2></div>
+    <div class="grid grid-3">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <div class="who">Ana López</div>
+        <p>"Las mejores instalaciones de la ciudad. El equipo siempre está limpio y los entrenadores son geniales."</p>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <div class="who">Carlos Mendoza</div>
+        <p>"Renovar mi plan fue súper rápido. Buen ambiente y mucha variedad de máquinas."</p>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★☆</div>
+        <div class="who">Sofía Ramirez</div>
+        <p>"Me encantan las clases grupales. El plan anual vale totalmente la pena."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONÓCENOS -->
+  <section class="panel" id="conocenos">
+    <h1>Conócenos</h1>
+    <p class="lead">Más que un gimnasio, somos una comunidad dedicada a tu bienestar.</p>
+
+    <div class="grid grid-2" style="align-items:center;">
+      <div class="gallery-item"><img src="images/gym-training.png" alt="Comunidad IronCore" style="height:300px;" /></div>
+      <div>
+        <h2>Nuestra historia</h2>
+        <p class="muted">IronCore Gym nació en 2015 con una misión clara: hacer del entrenamiento de calidad algo accesible para todos. Hoy contamos con equipo de última generación, entrenadores certificados y una comunidad que te motiva a dar lo mejor en cada sesión.</p>
+        <br/>
+        <p class="muted">Creemos que la constancia transforma vidas, y por eso facilitamos todo: desde tu inscripción hasta la renovación de tu plan.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="margin-top:30px;">
+      <div class="card center"><div class="price">+2,500</div><p class="muted small">Miembros activos</p></div>
+      <div class="card center"><div class="price">15</div><p class="muted small">Entrenadores certificados</p></div>
+      <div class="card center"><div class="price">24/7</div><p class="muted small">Acceso disponible</p></div>
+    </div>
+  </section>
+
+  <!-- PERFIL -->
+  <section class="panel" id="perfil">
+
+    <!-- Vista no autenticado -->
+    <div id="authView">
+      <h1>Mi Perfil</h1>
+      <p class="lead">Regístrate o inicia sesión para ver tu plan y su fecha de vencimiento.</p>
+
+      <div class="grid grid-2" style="max-width:760px;">
+        <div class="card">
+          <h2>Crear cuenta</h2>
+          <form id="registerForm">
+            <div class="form-row">
+              <label for="regName">Nombre completo</label>
+              <input type="text" id="regName" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-row">
+              <label for="regEmail">Correo electrónico</label>
+              <input type="email" id="regEmail" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div class="form-row">
+              <label for="regPass">Contraseña</label>
+              <input type="password" id="regPass" placeholder="••••••••" required />
+            </div>
+            <button type="submit" class="btn block">Registrarme</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Iniciar sesión</h2>
+          <form id="loginForm">
+            <div class="form-row">
+              <label for="logEmail">Correo electrónico</label>
+              <input type="email" id="logEmail" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div class="form-row">
+              <label for="logPass">Contraseña</label>
+              <input type="password" id="logPass" placeholder="••••••••" required />
+            </div>
+            <button type="submit" class="btn block">Entrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vista autenticado -->
+    <div id="profileView" style="display:none;">
+      <div class="section-title">
+        <h1>Hola, <span id="pfName">Miembro</span></h1>
+        <button class="btn outline" onclick="logout()">Cerrar sesión</button>
+      </div>
+
+      <div id="planAlert" class="alert">Cargando estado de tu plan...</div>
+
+      <div class="card" style="max-width:640px;">
+        <h2>Detalles de tu membresía</h2>
+        <div class="info-grid">
+          <div class="item"><span>Correo</span><b id="pfEmail">—</b></div>
+          <div class="item"><span>Plan contratado</span><b id="pfPlan">—</b></div>
+          <div class="item"><span>Inicio</span><b id="pfStart">—</b></div>
+          <div class="item"><span>Vence</span><b id="pfEnd">—</b></div>
+        </div>
+        <button class="btn block" onclick="goTab('planes')" id="renewBtn">Renovar / comprar plan</button>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 IronCore Gym · Demo de inscripciones · Pagos con Stripe
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
